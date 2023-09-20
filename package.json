@@ -1,0 +1,37 @@
+{
+	"$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
+	"name": "edgestatus",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"prepare:kv": "dotenv -e .env -- bash scripts/prepare-kv.sh",
+		"prepare:pages": "dotenv -e .env -- bash scripts/prepare-pages.sh",
+		"prepare:config": "dotenv -e .env -- bash scripts/prepare-config.sh",
+		"deploy": "npm run prepare:config && npm run build && dotenv -e .env -- bash scripts/deploy.sh",
+		"build": "vite build",
+		"dev": "vite"
+	},
+	"devDependencies": {
+		"@types/node": "^20.8.4",
+		"@vitejs/plugin-vue": "^4.4.0",
+		"@vueuse/core": "^10.5.0",
+		"dotenv-cli": "^7.3.0",
+		"esbuild": "^0.19.4",
+		"typescript": "^5.2.2",
+		"vite": "^4.4.11",
+		"vite-plugin-cloudflare-functions": "^0.6.1",
+		"vite-plugin-info": "0.4.1",
+		"vite-plugin-inspect": "^0.7.40",
+		"vitest": "^0.34.6",
+		"vue-tsc": "^1.8.5",
+		"wrangler": "^3.11.0"
+	},
+	"dependencies": {
+		"axios": "^1.5.1",
+		"http-status-codes": "^2.3.0",
+		"itty-cors": "^0.3.6",
+		"itty-router": "^4.0.23",
+		"vue": "^3.3.4",
+		"xksuid": "^0.0.3"
+	}
+}

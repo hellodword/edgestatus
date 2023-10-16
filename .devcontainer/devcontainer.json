@@ -6,7 +6,8 @@
 			"extensions": [
 				"dbaeumer.vscode-eslint",
 				"Vue.volar",
-				"Vue.vscode-typescript-vue-plugin"
+				"Vue.vscode-typescript-vue-plugin",
+				"streetsidesoftware.code-spell-checker"
 			]
 		}
 	},

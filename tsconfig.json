@@ -27,8 +27,8 @@
     "**/dist/**"
   ],
   "include": [
-    "src/*.ts",
-    "src/*.vue",
+    "src/**/*.ts",
+    "src/**/*.vue",
     "functions/**/*.ts"
   ]
 }

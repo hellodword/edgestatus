@@ -1,4 +1,4 @@
 {
-    "functions/**/*": "npm run lint",
-    "src/*": "npm run lint"
+    "*.ts": ["prettier --list-different", "eslint"],
+    "*.vue": ["prettier --list-different", "eslint"]
 }

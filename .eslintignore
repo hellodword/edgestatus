@@ -3,3 +3,7 @@ dist/
 index.html
 
 public
+
+vite.config.ts
+
+package*.json

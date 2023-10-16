@@ -33,6 +33,7 @@
         "vitejs",
         "unplugin",
         "pnpm",
+        "stylelint",
         // cloudflare
         "hono",
         "miniflare",

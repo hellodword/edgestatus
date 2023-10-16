@@ -1,4 +1,4 @@
 {
-    "*.ts": ["prettier --list-different", "eslint"],
-    "*.vue": ["prettier --list-different", "eslint"]
+    "*.{ts,vue}": ["prettier --list-different", "eslint"],
+    "*.{scss,less,css}": ["prettier --list-different", "stylelint"]
 }

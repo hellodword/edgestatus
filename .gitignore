@@ -44,6 +44,4 @@ dist-ssr
 
 /wrangler.toml
 
-/functions
-
 .wrangler

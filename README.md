@@ -31,7 +31,7 @@
 
     - https://blog.cloudflare.com/introducing-websockets-in-workers/
         > Our current thinking is that when using WebSockets, you'll be charged for wall clock time whenever a message is being processed by the Durable Object on any WebSocket connection - this charge would be shared across all WebSockets connected to a given Durable Object. When there is no CPU activity on a Durable Object, but any number of WebSocket connections remain established, you'll be billed a much lower active connection charge, per second.
-
+    - https://github.com/AggressivelyMeows/cfw-easy-utils/blob/970990b3f24d60343c3d92b2f6dd5ebd5cb8c2a6/src/websockets.js
 
 - pages & functions & impl
 
@@ -47,7 +47,7 @@
     - https://developers.cloudflare.com/kv/learning/how-kv-works/#consistency
         > Changes may take up to 60 seconds or more to be visible in other global network locations as their cached versions of the data time out
 
-- auth
+- auth & iam & oidc
 
     - https://github.com/subhendukundu/worker-auth-providers
     - https://github.com/subhendukundu/worker-auth-providers/tree/main/example/functions/api/v1/auth/github
@@ -55,6 +55,7 @@
     - https://developers.cloudflare.com/pages/platform/functions/plugins/cloudflare-access/
     - https://github.com/search?q=cloudflare+workers+oauth&type=repositories
     - https://github.com/search?q=cloudflare+workers+auth&type=repositories
+    - https://github.com/eidam/cf-access-workers-oidc
 
 - protocols
 
@@ -63,5 +64,6 @@
 
 - others
 
+    - https://github.com/honojs/examples/tree/cc93499076475b7138b499343b38ad6f34e52b00/pages-stack
     - https://github.com/microfeed/microfeed
     - https://blog.cloudflare.com/zh-cn/production-saas-intro-zh-cn/

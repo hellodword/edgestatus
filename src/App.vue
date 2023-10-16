@@ -3,9 +3,11 @@ import now from '~build/time';
 
 import { ref, watch } from 'vue';
 
-import { useFunctions } from 'vite-plugin-cloudflare-functions/client';
+import type { InferResponseType } from 'hono/client';
+import { hc } from 'hono/client';
+import { AppType } from '../functions/api/[[route]]';
 
-const client = useFunctions();
+const client = hc<AppType>('/').api;
 
 const endpoint = ref('world');
 
@@ -16,10 +18,26 @@ const response = ref();
 watch(
   endpoint,
   async (endpoint) => {
-    client.raw.get(`/api/${endpoint}`).then((resp) => {
-      response.value = resp;
-      message.value = resp.data;
-    });
+    if (endpoint.startsWith('state/')) {
+      client.state[':key'].$get({
+        param: {
+          key: endpoint.replace(/^state\//, ''),
+        }
+      }).then(async (resp) => {
+        response.value = await resp.json();
+        message.value = response.value.data;
+      });
+    } else {
+      client[':msg'].$get({
+        param: {
+          msg: endpoint,
+        }
+      }).then(async (resp) => {
+        response.value = await resp.json();
+        message.value = response.value.data;
+      });
+    }
+
   },
   { immediate: true }
 );
@@ -28,7 +46,7 @@ watch(
 <template>
   <div text-xl flex justify-center my8>
     <div space-y-4 max-w="80vw">
-      <h1 text-2xl font-bold pb4 border="b-1 base">Vite Plugin Cloudflare Functions</h1>
+      <h1 text-2xl font-bold pb4 border="b-1 base">Vite & Cloudflare Functions</h1>
       <div flex justify-start items-center>
         <span mr2 text-base-500>Endpoint:</span><span mr1 font-bold>/api/</span><input type="text" id="endpoint"
           v-model="endpoint" class="font-bold" />

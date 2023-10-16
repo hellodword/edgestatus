@@ -1,8 +1,0 @@
-{
-  "name": "playground-functions",
-  "private": true,
-  "type": "module",
-  "devDependencies": {
-    "vite-plugin-cloudflare-functions": "0.5.3"
-  }
-}

@@ -24,9 +24,9 @@
         "*.env.*": "dotenv",
         "*.css": "postcss"
     },
-    "gutterpreview.paths": {
-        "@": "/src"
-    },
+    // "gutterpreview.paths": {
+    //     "@": "/src"
+    // },
     "path-intellisense.mappings": {
         "@": "${workspaceFolder}/src"
     },
@@ -45,9 +45,9 @@
     "[javascriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[markdown]": {
-        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-    },
+    // "[markdown]": {
+    //     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    // },
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -55,6 +55,8 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[vue]": {
-        "editor.defaultFormatter": "Vue.volar"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
+    // 不认 ${workspaceFolder}
+    // "prettier.configPath": "prettier.config.js"
 }

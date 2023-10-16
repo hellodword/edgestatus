@@ -2,9 +2,14 @@
 import now from '~build/time';
 
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import { hc } from 'hono/client';
 import type { AppType } from '../functions/api/[[route]]';
+
+import LangSwitcher from './components/LangSwitcher.vue';
+
+const { t } = useI18n();
 
 const client = hc<AppType>('/').api;
 
@@ -57,6 +62,9 @@ watch(
             <h1 text-2xl font-bold pb4 border="b-1 base">
                 Vite & Cloudflare Functions
             </h1>
+            <div>
+                <LangSwitcher class="switch-icon" />
+            </div>
             <div flex justify-start items-center>
                 <span mr2 text-base-500>Endpoint:</span
                 ><span mr1 font-bold>/api/</span
@@ -78,7 +86,7 @@ watch(
                 }}</pre>
             </div>
             <div text-base-500 border="t-1 base" pt4>
-                Build at: {{ now.toLocaleString() }}
+                {{ t('common.home') }} Build at: {{ now.toLocaleString() }}
             </div>
         </div>
     </div>

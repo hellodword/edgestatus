@@ -11,7 +11,7 @@
 - [ ] chart
 - [ ] user manager
     - [ ] [auth](https://github.com/subhendukundu/worker-auth-providers/tree/main/example/functions/api/v1/auth/github)
-    - [ ] kv as user white list (with admin page)
+    - [ ] ~~kv as user white list (with admin page)~~ use D1
     - [ ] private items
     - [ ] share a snapshot status page of public items
 - [ ] export/import

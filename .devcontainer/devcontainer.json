@@ -8,7 +8,9 @@
                 "Vue.volar",
                 "Vue.vscode-typescript-vue-plugin",
                 "streetsidesoftware.code-spell-checker",
-                "esbenp.prettier-vscode"
+                "esbenp.prettier-vscode",
+                "lokalise.i18n-ally",
+                "christian-kohler.path-intellisense"
             ]
         }
     },

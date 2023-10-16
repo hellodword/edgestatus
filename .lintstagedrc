@@ -1,0 +1,4 @@
+{
+    "functions/**/*": "npm run lint",
+    "src/*": "npm run lint"
+}

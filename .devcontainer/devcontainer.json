@@ -11,7 +11,12 @@
 		}
 	},
 	"features": {},
-	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+	"postCreateCommand": "ln -sf ~/.gnupg-host/S.gpg-agent ~/.gnupg/S.gpg-agent && bash .devcontainer/postCreateCommand.sh",
+	"mounts": [
+		// https://github.com/lrb2/lrbot-discord/blob/5ef5fd282c017cbdb4a6f6cf6819b4332d84e410/.devcontainer/devcontainer.json#L37C1-L37C1
+		// Mount the host's gpg-agent. Not ideal, but it's the only way I've gotten gpg to work for commit signing
+		"source=${env:XDG_RUNTIME_DIR}/gnupg/S.gpg-agent,target=/home/node/.gnupg-host/S.gpg-agent,type=bind,readonly"
+	],
 	"containerEnv": {
 		"WRANGLER_SEND_METRICS": "false"
 	}

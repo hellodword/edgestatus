@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { handle } from 'hono/cloudflare-pages'
-import { Bindings } from '../bindings'
+import type { Bindings } from '../bindings'
 
 const app = new Hono<{ Bindings: Bindings }>().basePath('/api')
 
@@ -11,7 +11,7 @@ const route = app
       status: 'OK',
       method: c.req.method,
       data: `Hello ${msg} from Hono!`,
-      env: c.env,
+      env: c.env
     })
   })
   .post('/:msg', (c) => {
@@ -20,13 +20,13 @@ const route = app
       status: 'OK',
       method: c.req.method,
       data: `Hello ${msg} from Hono!`,
-      env: c.env,
+      env: c.env
     })
   })
 
   .get('/state/:key', async (c) => {
     const { key } = c.req.param()
-    const value = await c.env.EDGESTATUS.get(key);
+    const value = await c.env.EDGESTATUS.get(key)
 
     return c.json({
       key,
@@ -35,9 +35,9 @@ const route = app
   })
   .post('/state/:key', async (c) => {
     const { key } = c.req.param()
-    const value = await c.req.text();
+    const value = await c.req.text()
 
-    await c.env.EDGESTATUS.put(key, value);
+    await c.env.EDGESTATUS.put(key, value)
 
     return c.json({
       key,
@@ -45,8 +45,6 @@ const route = app
     })
   })
 
+export type AppType = typeof route
 
-
-export type AppType = typeof route;
-
-export const onRequest = handle(app);
+export const onRequest = handle(app)

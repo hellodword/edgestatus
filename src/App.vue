@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import now from '~build/time';
+import now from '~build/time'
 
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue'
 
-import type { InferResponseType } from 'hono/client';
-import { hc } from 'hono/client';
-import { AppType } from '../functions/api/[[route]]';
+import { hc } from 'hono/client'
+import type { AppType } from '../functions/api/[[route]]'
 
-const client = hc<AppType>('/').api;
+const client = hc<AppType>('/').api
 
-const endpoint = ref('world');
+const endpoint = ref('world')
 
-const message: any = ref<object>({});
+const message: any = ref<object>({})
 
-const response = ref();
+const response = ref()
 
 watch(
   endpoint,
@@ -21,26 +20,29 @@ watch(
     if (endpoint.startsWith('state/')) {
       client.state[':key'].$get({
         param: {
-          key: endpoint.replace(/^state\//, ''),
+          key: endpoint.replace(/^state\//, '')
         }
       }).then(async (resp) => {
-        response.value = await resp.json();
-        message.value = response.value.data;
-      });
+        response.value = await resp.json()
+        message.value = response.value.data
+      }).catch((err) => {
+        throw err
+      })
     } else {
       client[':msg'].$get({
         param: {
-          msg: endpoint,
+          msg: endpoint
         }
       }).then(async (resp) => {
-        response.value = await resp.json();
-        message.value = response.value.data;
-      });
+        response.value = await resp.json()
+        message.value = response.value.data
+      }).catch((err) => {
+        throw err
+      })
     }
-
   },
   { immediate: true }
-);
+)
 </script>
 
 <template>

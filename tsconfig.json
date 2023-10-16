@@ -29,6 +29,6 @@
   "include": [
     "src/*.ts",
     "src/*.vue",
-    "*.d.ts"
+    "functions/**/*.ts"
   ]
 }

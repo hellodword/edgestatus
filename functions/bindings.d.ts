@@ -1,7 +1,7 @@
 export type Bindings = {
-    EDGESTATUS: KVNamespace
+  EDGESTATUS: KVNamespace
 }
 
 declare global {
-    function getMiniflareBindings(): Bindings
+  function getMiniflareBindings(): Bindings
 }

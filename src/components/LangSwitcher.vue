@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { mdiTranslate } from '@mdi/js';
 import { useI18n } from 'vue-i18n';
 
 const { availableLocales, locale } = useI18n();
@@ -12,14 +13,5 @@ function toggleLocales() {
 </script>
 
 <template>
-    <button @click.prevent="toggleLocales">
-        <!-- <div i-carbon-language /> -->
-    </button>
+    <v-icon :icon="mdiTranslate" @click.prevent="toggleLocales" />
 </template>
-
-<style>
-button {
-    width: 30px;
-    height: 30px;
-}
-</style>

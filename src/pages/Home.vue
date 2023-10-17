@@ -3,10 +3,12 @@ import { ref, watch } from 'vue';
 import { hc } from 'hono/client';
 
 import type { AppType } from '@functions/api/[[route]]';
+import { useEndpointStore } from '@/store';
+
+const endpoint = useEndpointStore();
 
 const client = hc<AppType>('/').api;
 
-const endpoint = ref('world');
 const response = ref();
 const message = ref<string>('');
 const rules = [(value: string) => value.length > 0 || 'Required.'];
@@ -17,11 +19,11 @@ watch(
         response.value = {};
         message.value = '';
 
-        if (endpoint.startsWith('state/')) {
+        if (endpoint.value.startsWith('state/')) {
             client.state[':key']
                 .$get({
                     param: {
-                        key: endpoint.replace(/^state\//, ''),
+                        key: endpoint.value.replace(/^state\//, ''),
                     },
                 })
                 .then(async (resp) => {
@@ -35,7 +37,7 @@ watch(
             client[':msg']
                 .$get({
                     param: {
-                        msg: endpoint,
+                        msg: endpoint.value,
                     },
                 })
                 .then(async (resp) => {
@@ -58,7 +60,7 @@ watch(
                 label="Endpoint"
                 hide-details="auto"
                 :rules="rules"
-                v-model="endpoint"
+                v-model="endpoint.value"
                 class="mx-4 my-2"
             >
                 <template v-slot:prepend>

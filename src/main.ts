@@ -10,6 +10,7 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import App from '@/App.vue';
 import { i18n } from '@/i18n';
 import { router } from '@/router';
+import { store } from '@/store';
 
 const vuetify = createVuetify({
     components,
@@ -29,6 +30,7 @@ const vuetify = createVuetify({
 const app = createApp(App);
 
 app.use(router);
+app.use(store);
 app.use(i18n);
 app.use(vuetify);
 

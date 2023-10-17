@@ -37,7 +37,7 @@ module.exports = {
             parserOptions: {
                 parser: '@typescript-eslint/parser',
                 ecmaVersion: 2021,
-                extraFileExtensions: ['.vue'],
+                project: './tsconfig.json',
             },
             rules: {
                 'no-console': 'off',
@@ -47,6 +47,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
+        extraFileExtensions: ['.vue'],
     },
     plugins: ['vue'],
     rules: {

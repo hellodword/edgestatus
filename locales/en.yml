@@ -1,2 +1,10 @@
 common:
+    about: About
+    buildAt: 'Build at:'
+    contact: Contact
     home: Home
+    services: Services
+    subtitle: Uptime Monitor running at Cloudflare Edge Network
+    template: Template
+    title: EdgeStatus
+    translate: 切换到中文

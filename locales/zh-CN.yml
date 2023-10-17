@@ -1,2 +1,10 @@
 common:
+    about: 关于
+    buildAt: 构建于：
+    contact: 联系
     home: 主页
+    services: 服务
+    subtitle: 运行在 Cloudflare 边缘网络上的 Uptime 监控
+    template: 模版
+    title: EdgeStatus
+    translate: Switch to English

@@ -14,6 +14,7 @@
     - [ ] ~~kv as user white list (with admin page)~~ use D1
     - [ ] private items
     - [ ] share a snapshot status page of public items
+    - [ ] draggable list for ordering the items
 - [ ] export/import
 
 

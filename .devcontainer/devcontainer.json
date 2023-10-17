@@ -10,7 +10,8 @@
                 "streetsidesoftware.code-spell-checker",
                 "esbenp.prettier-vscode",
                 "lokalise.i18n-ally",
-                "christian-kohler.path-intellisense"
+                "christian-kohler.path-intellisense",
+                "wix.vscode-import-cost"
             ]
         }
     },

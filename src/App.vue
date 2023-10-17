@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import now from '~build/time';
-
 import { ref, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
-
 import { hc } from 'hono/client';
-import type { AppType } from '../functions/api/[[route]]';
 
-import LangSwitcher from './components/LangSwitcher.vue';
-
-const { t } = useI18n();
+import type { AppType } from '@functions/api/[[route]]';
+import NavigationDrawer from '@/components/shared/NavigationDrawer.vue';
+import SharedFooter from '@/components/shared/SharedFooter.vue';
+import SharedHeader from './components/shared/SharedHeader.vue';
 
 const client = hc<AppType>('/').api;
 
 const endpoint = ref('world');
-
-const message: any = ref<object>({});
-
 const response = ref();
+const message = ref<string>('');
+const rules = [(value: string) => value.length > 0 || 'Required.'];
 
 watch(
     endpoint,
     async (endpoint) => {
+        response.value = {};
+        message.value = '';
+
         if (endpoint.startsWith('state/')) {
             client.state[':key']
                 .$get({
@@ -57,37 +55,58 @@ watch(
 </script>
 
 <template>
-    <div text-xl flex justify-center my8>
-        <div space-y-4 max-w="80vw">
-            <h1 text-2xl font-bold pb4 border="b-1 base">
-                Vite & Cloudflare Functions
-            </h1>
-            <div>
-                <LangSwitcher class="switch-icon" />
-            </div>
-            <div flex justify-start items-center>
-                <span mr2 text-base-500>Endpoint:</span
-                ><span mr1 font-bold>/api/</span
-                ><input
-                    type="text"
-                    id="endpoint"
-                    v-model="endpoint"
-                    class="font-bold"
-                />
-            </div>
-            <div>
-                <span text-base-500>Message: </span
-                ><span font-bold>{{ message }}</span>
-            </div>
-            <div v-if="response">
-                <span text-base-500>Response: </span>
-                <pre overflow-x-auto max-w="80vw">{{
-                    JSON.stringify(response, null, 2)
-                }}</pre>
-            </div>
-            <div text-base-500 border="t-1 base" pt4>
-                {{ t('common.home') }} Build at: {{ now.toLocaleString() }}
-            </div>
-        </div>
-    </div>
+    <v-app id="inspire">
+        <v-layout>
+            <SharedHeader />
+            <NavigationDrawer />
+
+            <v-main>
+                <v-container fluid>
+                    <v-card width="95%" class="mx-auto mt-4">
+                        <v-text-field
+                            label="Endpoint"
+                            hide-details="auto"
+                            :rules="rules"
+                            v-model="endpoint"
+                            class="mx-4 my-2"
+                        >
+                            <template v-slot:prepend>
+                                <span>/api/</span>
+                            </template>
+                        </v-text-field>
+                    </v-card>
+
+                    <v-card
+                        v-if="message"
+                        width="95%"
+                        title="Message"
+                        :text="message"
+                        class="mx-auto my-2"
+                    ></v-card>
+
+                    <v-card
+                        v-if="response"
+                        width="95%"
+                        title="Response"
+                        :text="JSON.stringify(response, null, 2)"
+                        class="mx-auto my-2"
+                    ></v-card>
+                </v-container>
+            </v-main>
+            <SharedFooter />
+        </v-layout>
+    </v-app>
 </template>
+
+<style>
+.v-card {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+}
+
+.v-main {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+</style>

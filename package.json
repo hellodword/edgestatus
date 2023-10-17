@@ -50,12 +50,14 @@
         "wrangler": "^3.13.1"
     },
     "dependencies": {
+        "@hono/zod-validator": "^0.1.9",
         "axios": "^1.5.1",
         "hono": "^3.7.6",
         "http-status-codes": "^2.3.0",
         "vue": "^3.3.4",
         "vue-i18n": "^9.5.0",
         "vuetify": "^3.3.21",
-        "xksuid": "^0.0.3"
+        "xksuid": "^0.0.3",
+        "zod": "^3.22.4"
     }
 }

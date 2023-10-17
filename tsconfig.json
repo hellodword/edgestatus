@@ -14,9 +14,21 @@
         "strict": true,
         "target": "ESNext",
         "types": ["vite/client", "vite-plugin-info/client"],
-        "paths": {},
+        "paths": {
+            "@": ["src"],
+            "@/*": ["src/*"],
+            "@functions": ["functions"],
+            "@functions/*": ["functions/*"]
+        },
         "useDefineForClassFields": true
     },
     "exclude": ["**/dist/**"],
-    "include": ["src/**/*.ts", "src/**/*.vue", "functions/**/*.ts"]
+    "include": [
+        "src/*.ts",
+        "src/**/*.ts",
+        "src/*.vue",
+        "src/**/*.vue",
+        "functions/*.ts",
+        "functions/**/*.ts"
+    ]
 }

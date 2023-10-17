@@ -28,7 +28,8 @@
     //     "@": "/src"
     // },
     "path-intellisense.mappings": {
-        "@": "${workspaceFolder}/src"
+        "@": "${workspaceFolder}/src",
+        "@functions": "${workspaceFolder}/functions"
     },
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 
-import App from './App.vue';
+import App from '@/App.vue';
 // Vuetify
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
@@ -8,7 +8,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 
-import { i18n } from './i18n';
+import { i18n } from '@/i18n';
 
 const vuetify = createVuetify({
     components,
@@ -19,6 +19,9 @@ const vuetify = createVuetify({
         sets: {
             mdi,
         },
+    },
+    theme: {
+        defaultTheme: 'light',
     },
 });
 

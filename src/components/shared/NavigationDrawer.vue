@@ -1,11 +1,18 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import { mdiChevronLeft, mdiTranslate } from '@mdi/js';
 
 import logo from '@/assets/images/logo.svg';
 
 const { availableLocales, locale, t } = useI18n();
+const router = useRouter();
+
+const goToHome = async () => {
+    console.log('goToHome');
+    await router.push('/');
+};
 
 function toggleLocales() {
     // change to some real logic
@@ -25,6 +32,7 @@ const drawer = ref(true);
                 :prepend-avatar="logo"
                 :title="t('common.title')"
                 :subtitle="t('common.subtitle')"
+                @click="rail == false && goToHome()"
             >
                 <template v-slot:append>
                     <v-btn
@@ -42,7 +50,7 @@ const drawer = ref(true);
             <v-list-item
                 :prepend-icon="mdiTranslate"
                 :title="t('common.translate')"
-                @click="toggleLocales"
+                @click="rail == false && toggleLocales()"
             ></v-list-item>
         </v-list>
     </v-navigation-drawer>

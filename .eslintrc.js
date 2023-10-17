@@ -26,10 +26,6 @@ module.exports = {
             parserOptions: {
                 project: './tsconfig.json',
             },
-            rules: {
-                '@typescript-eslint/consistent-type-definitions': ['off'],
-                '@typescript-eslint/space-before-function-paren': 'off',
-            },
         },
         {
             files: ['*.vue'],
@@ -38,9 +34,6 @@ module.exports = {
                 parser: '@typescript-eslint/parser',
                 ecmaVersion: 2021,
                 project: './tsconfig.json',
-            },
-            rules: {
-                'no-console': 'off',
             },
         },
     ],
@@ -52,5 +45,9 @@ module.exports = {
     plugins: ['vue'],
     rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/consistent-type-definitions': ['off'],
+        '@typescript-eslint/space-before-function-paren': 'off',
+        'vue/multi-word-component-names': 'off',
+        'no-console': 'off',
     },
 };

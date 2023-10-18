@@ -13,7 +13,7 @@
         "sourceMap": true,
         "strict": true,
         "target": "ESNext",
-        "types": ["vite/client", "vite-plugin-info/client"],
+        "types": ["vite/client"],
         "paths": {
             "@": ["src"],
             "@/*": ["src/*"],

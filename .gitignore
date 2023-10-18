@@ -30,15 +30,15 @@ dist-ssr
 .idea
 
 .cargo-ok
-
 /bin
 /pkg
 **/*.rs.bk
 /target
-.env*
 
-/.wrangler
+.env
+.env.*
+!.env.template
 
-/wrangler.toml
-
+wrangler.toml
 .wrangler
+!template.wrangler.toml

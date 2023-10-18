@@ -1,5 +1,7 @@
 {
     "*.{ts,vue}": ["prettier --list-different", "eslint"],
     "*.md": ["prettier --list-different"],
-    "*.{scss,less,css}": ["prettier --list-different", "stylelint"]
+    "*.{scss,less,css}": ["prettier --list-different", "stylelint"],
+    ".env": ["THIS_FILE_SHOULD_NEVER_BE_COMMITTED"],
+    "wrangler.toml": ["THIS_FILE_SHOULD_NEVER_BE_COMMITTED"]
 }

@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import { hc } from 'hono/client';
 
 import type { AppType } from '@functions/api/[[route]]';
-import { useEndpointStore } from '@/store';
+import { useEndpointStore } from '@/store/endpoint';
 
 const endpoint = useEndpointStore();
 

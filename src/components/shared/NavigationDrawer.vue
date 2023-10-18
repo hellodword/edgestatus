@@ -2,16 +2,16 @@
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
-import { mdiChevronLeft, mdiTranslate } from '@mdi/js';
+import { mdiEmail, mdiInformation, mdiTranslate } from '@mdi/js';
 
 import logo from '@/assets/images/logo.svg';
 
 const { availableLocales, locale, t } = useI18n();
 const router = useRouter();
 
-const goToHome = async () => {
-    console.log('goToHome');
-    await router.push('/');
+const goTo = async (path: string) => {
+    console.log('goTo', path);
+    await router.push(path);
 };
 
 function toggleLocales() {
@@ -21,37 +21,59 @@ function toggleLocales() {
         locales[(locales.indexOf(locale.value) + 1) % locales.length];
 }
 
-const rail = ref(true);
 const drawer = ref(true);
 </script>
 <template>
-    <v-navigation-drawer :rail="rail" permanent @click="rail = false">
+    <v-navigation-drawer :rail="true" permanent>
         <v-list>
             <v-list-item
                 v-model="drawer"
                 :prepend-avatar="logo"
                 :title="t('common.title')"
                 :subtitle="t('common.subtitle')"
-                @click="rail == false && goToHome()"
+                @click="goTo('/')"
             >
-                <template v-slot:append>
-                    <v-btn
-                        variant="text"
-                        :icon="mdiChevronLeft"
-                        @click.stop="rail = !rail"
-                    ></v-btn>
-                </template>
             </v-list-item>
         </v-list>
 
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-            <v-list-item
-                :prepend-icon="mdiTranslate"
-                :title="t('common.translate')"
-                @click="rail == false && toggleLocales()"
-            ></v-list-item>
+            <v-tooltip location="end">
+                <template v-slot:activator="{ props }">
+                    <v-list-item
+                        v-bind="props"
+                        :prepend-icon="mdiInformation"
+                        :title="t('common.about')"
+                        @click="goTo('/about')"
+                    ></v-list-item>
+                </template>
+                <span>{{ t('common.about') }}</span>
+            </v-tooltip>
+
+            <v-tooltip location="end">
+                <template v-slot:activator="{ props }">
+                    <v-list-item
+                        v-bind="props"
+                        :prepend-icon="mdiEmail"
+                        :title="t('common.contact')"
+                        @click="goTo('/contact')"
+                    ></v-list-item>
+                </template>
+                <span>{{ t('common.contact') }}</span>
+            </v-tooltip>
+
+            <v-tooltip location="end">
+                <template v-slot:activator="{ props }">
+                    <v-list-item
+                        v-bind="props"
+                        :prepend-icon="mdiTranslate"
+                        :title="t('common.translate')"
+                        @click="toggleLocales"
+                    ></v-list-item>
+                </template>
+                <span>{{ t('common.translate') }}</span>
+            </v-tooltip>
         </v-list>
     </v-navigation-drawer>
 </template>

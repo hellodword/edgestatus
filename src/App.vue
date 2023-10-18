@@ -20,7 +20,7 @@ import SharedHeader from './components/shared/SharedHeader.vue';
 
 <style>
 .v-main {
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 50px);
     overflow-y: auto;
 }
 </style>

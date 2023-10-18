@@ -36,6 +36,8 @@
         "stylelint",
         "vuetify",
         "iconsets",
+        "commitlint",
+        "arrowParens",
         // cloudflare
         "hono",
         "miniflare",

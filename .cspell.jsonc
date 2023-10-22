@@ -38,6 +38,9 @@
         "iconsets",
         "commitlint",
         "arrowParens",
+        "openapi",
+        "redoc",
+        "crossorigin",
         // cloudflare
         "hono",
         "miniflare",

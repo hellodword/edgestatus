@@ -2,12 +2,12 @@
 import { ref, watch } from 'vue';
 import { hc } from 'hono/client';
 
-import type { AppType } from '@functions/api/[[route]]';
+import { basePath, type AppType } from '@functions/api/[[route]]';
 import { useEndpointStore } from '@/store/endpoint';
 
 const endpoint = useEndpointStore();
 
-const client = hc<AppType>('/').api;
+const client = hc<AppType>('/');
 
 const response = ref();
 const message = ref<string>('');
@@ -19,35 +19,19 @@ watch(
         response.value = {};
         message.value = '';
 
-        if (endpoint.value.startsWith('state/')) {
-            client.state[':key']
-                .$get({
-                    param: {
-                        key: endpoint.value.replace(/^state\//, ''),
-                    },
-                })
-                .then(async (resp) => {
-                    response.value = await resp.json();
-                    message.value = response.value.data;
-                })
-                .catch((err) => {
-                    throw err;
-                });
-        } else {
-            client[':msg']
-                .$get({
-                    param: {
-                        msg: endpoint.value,
-                    },
-                })
-                .then(async (resp) => {
-                    response.value = await resp.json();
-                    message.value = response.value.data;
-                })
-                .catch((err) => {
-                    throw err;
-                });
-        }
+        client.api[':msg']
+            .$get({
+                param: {
+                    msg: endpoint.value,
+                },
+            })
+            .then(async (resp) => {
+                response.value = await resp.json();
+                message.value = response.value.data;
+            })
+            .catch((err) => {
+                throw err;
+            });
     },
     { immediate: true },
 );
@@ -64,7 +48,7 @@ watch(
                 class="mx-4 my-2"
             >
                 <template v-slot:prepend>
-                    <span>/api/</span>
+                    <span>{{ basePath }}</span>
                 </template>
             </v-text-field>
         </v-card>

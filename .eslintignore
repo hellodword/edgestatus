@@ -7,3 +7,5 @@ public
 vite.config.ts
 
 package*.json
+*.json
+*.jsonc

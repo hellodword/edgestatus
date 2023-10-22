@@ -5,12 +5,12 @@
 -   [ ] collector
     -   [ ] [agent report](./api.md#report)
     -   [ ] workers cron ([queues](https://developers.cloudflare.com/queues/))
--   [ ] latest n records ([xksuid](https://github.com/ValeriaVG/xksuid))
 -   [ ] records pagination
 -   [ ] chart
 -   [ ] user manager
     -   [ ] [auth](https://github.com/subhendukundu/worker-auth-providers/tree/main/example/functions/api/v1/auth/github)
     -   [ ] ~~kv as user white list (with admin page)~~ use D1
+        -   [ ] ~~latest n records ([xksuid](https://github.com/ValeriaVG/xksuid))~~
     -   [ ] private items
     -   [ ] share a snapshot status page of public items
     -   [ ] draggable list for ordering the items
@@ -64,6 +64,8 @@
 
 -   others
 
+    -   https://docs.astro.build/en/guides/deploy/cloudflare/ | [github](https://github.com/withastro/astro/tree/c6e0d8e1cdf58e4cc797e86fb3cc4494e2111566/examples/framework-vue)
+    -   https://nitro.unjs.io/deploy/providers/cloudflare
     -   https://github.com/honojs/examples/tree/cc93499076475b7138b499343b38ad6f34e52b00/pages-stack
     -   https://github.com/microfeed/microfeed
     -   https://blog.cloudflare.com/zh-cn/production-saas-intro-zh-cn/

@@ -3,6 +3,9 @@
 set -e
 set -x
 
+# https://docs.npmjs.com/cli/v8/commands/npm-completion
+npm completion >> ~/.bashrc
+
 cat << EOF >> ~/.bashrc
 export PATH="$PATH:~/.local/bin"
 EOF

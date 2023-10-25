@@ -1,6 +1,9 @@
-import { basePath } from '@functions/api/[[route]]';
 import { type OpenAPIHono } from '@hono/zod-openapi';
+import { StatusCodes } from 'http-status-codes';
+
+import { basePath } from '@functions/api/[[route]]';
 import {
+    APIDocsTitle,
     HandlerDocs,
     HandlerDocsRedoc,
     HandlerDocsSwagger,
@@ -13,18 +16,34 @@ export function setupOpenapi(app: OpenAPIHono<any>) {
         openapi: '3.0.0',
         info: {
             version: 'v1',
-            title: 'Sample ToDo list API',
+            title: APIDocsTitle,
             description:
-                'This API exhibits how you can provide a comprehensible API documentation using [Hono](https://hono.dev), [Swagger UI](https://swagger.io/docs/open-source-tools/swagger-ui/), and [Redoc](https://redocly.com/docs/redoc/).',
+                'API documentation powered by [Hono](https://hono.dev), [Swagger UI](https://swagger.io/docs/open-source-tools/swagger-ui/), and [Redoc](https://redocly.com/docs/redoc/).',
             'x-logo': {
-                url: 'https://placehold.co/260x100/EEE/31343C?font=montserrat&text=Sample%20ToDo%0AAPI',
-                altText: 'Sample ToDo API logo',
+                url: `https://placehold.co/260x100/EEE/31343C?font=montserrat&text=${encodeURIComponent(
+                    APIDocsTitle,
+                )}`,
+                altText: `${APIDocsTitle} logo`,
             },
         },
-        tags: [{ name: 'Task', description: 'Manipulation on ToDo list' }],
     });
 
-    app.get(`${docsRoot}`, HandlerDocs(docsRoot))
-        .get(`${docsRoot}/redoc`, HandlerDocsRedoc(docsRoot))
-        .get(`${docsRoot}/swagger`, HandlerDocsSwagger(docsRoot));
+    app.get(`${basePath}`, (c) =>
+        c.redirect(`${docsRoot}/`, StatusCodes.MOVED_PERMANENTLY),
+    )
+        .get(`${basePath}/`, (c) =>
+            c.redirect(`${docsRoot}/`, StatusCodes.MOVED_PERMANENTLY),
+        )
+        .get(`${docsRoot}`, (c) =>
+            c.redirect(`${docsRoot}/`, StatusCodes.MOVED_PERMANENTLY),
+        )
+        .get(`${docsRoot}/`, HandlerDocs(docsRoot))
+        .get(`${docsRoot}/redoc`, (c) =>
+            c.redirect(`${docsRoot}/redoc/`, StatusCodes.MOVED_PERMANENTLY),
+        )
+        .get(`${docsRoot}/redoc/`, HandlerDocsRedoc(docsRoot))
+        .get(`${docsRoot}/swagger`, (c) =>
+            c.redirect(`${docsRoot}/swagger/`, StatusCodes.MOVED_PERMANENTLY),
+        )
+        .get(`${docsRoot}/swagger/`, HandlerDocsSwagger(docsRoot));
 }

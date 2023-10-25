@@ -1,8 +1,8 @@
 name = "edgestatus"
 main = "./src/index.ts"
-compatibility_date = "2022-05-03"
+compatibility_date = "2023-10-16"
 workers_dev = true
-minify = true
+minify = false
 # node_compat = true
 send_metrics = false
 logpush = false

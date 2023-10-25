@@ -42,3 +42,5 @@ dist-ssr
 wrangler.toml
 .wrangler
 !template.wrangler.toml
+
+.dev.vars

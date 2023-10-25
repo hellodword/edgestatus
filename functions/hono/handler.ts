@@ -1,6 +1,8 @@
 import { type Context } from 'hono';
 import { html } from 'hono/html';
 
+export const APIDocsTitle = 'API Docs';
+
 export function HandlerDocs(basePath: string) {
     return (c: Context) =>
         c.html(
@@ -14,7 +16,7 @@ export function HandlerDocs(basePath: string) {
                     </head>
                     <body>
                         <main>
-                            <h1>${'Sample ToDo list API'}</h1>
+                            <h1>${APIDocsTitle}</h1>
                             <p>
                                 You can find API reference in either${' '}
                                 <a href="${basePath}/redoc">Redoc</a> style
@@ -40,7 +42,7 @@ export function HandlerDocsSwagger(basePath: string) {
                             content="width=device-width, initial-scale=1"
                         />
                         <meta name="description" content="SwaggerUI" />
-                        <title>Sample ToDo API | SwaggerUI</title>
+                        <title>${APIDocsTitle} | SwaggerUI</title>
                         <link
                             rel="stylesheet"
                             href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css"
@@ -77,7 +79,7 @@ export function HandlerDocsRedoc(basePath: string) {
                             content="width=device-width, initial-scale=1"
                         />
                         <meta name="description" content="SwaggerUI" />
-                        <title>Sample ToDo API | Redoc</title>
+                        <title>${APIDocsTitle} | Redoc</title>
                     </head>
                     <body>
                         <redoc spec-url="${basePath}/openapi-spec.json"></redoc>

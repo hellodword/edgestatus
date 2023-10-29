@@ -4,6 +4,9 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                "editorconfig.editorconfig",
+                "sdras.vue-vscode-snippets",
+                "formulahendry.auto-close-tag",
                 "dbaeumer.vscode-eslint",
                 "Vue.volar",
                 "Vue.vscode-typescript-vue-plugin",

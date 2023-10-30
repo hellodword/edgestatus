@@ -18,8 +18,8 @@
     "devDependencies": {
         "@commitlint/cli": "^18.2.0",
         "@commitlint/config-conventional": "^18.1.0",
-        "@hono/zod-openapi": "^0.8.1",
-        "@hono/zod-validator": "^0.1.10",
+        "@hono/zod-openapi": "^0.8.2",
+        "@hono/zod-validator": "^0.1.11",
         "@intlify/unplugin-vue-i18n": "^1.4.0",
         "@mdi/js": "^7.3.67",
         "@typescript-eslint/eslint-plugin": "^6.9.0",
